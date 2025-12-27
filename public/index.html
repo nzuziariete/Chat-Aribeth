@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat-Aribeth</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar com usuários online -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-users"></i> Usuários Online</h2>
+                <div class="online-count" id="onlineCount">0</div>
+            </div>
+            <div class="user-list" id="userList">
+                <!-- Usuários online serão inseridos aqui -->
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="current-user" id="currentUserDisplay">
+                    <!-- Usuário atual será exibido aqui -->
+                </div>
+                <button id="changeUsernameBtn" class="btn-change">
+                    <i class="fas fa-edit"></i> Alterar Nome
+                </button>
+            </div>
+        </div>
+
+        <!-- Área principal do chat -->
+        <div class="main-content">
+            <!-- Cabeçalho -->
+            <header class="chat-header">
+                <h1><i class="fas fa-comments"></i> Chat-Aribeth </h1>
+                <p class="subtitle">Sistemas Distribuídos e Paralelos - ISPPU</p>
+            </header>
+
+            <!-- Área de mensagens -->
+            <div class="chat-container">
+                <div class="messages" id="messages">
+                    <!-- Mensagens serão inseridas aqui -->
+                </div>
+                
+                <!-- Indicador de digitação -->
+                <div class="typing-indicator" id="typingIndicator">
+                    <!-- Indicador será exibido aqui -->
+                </div>
+            </div>
+
+            <!-- Controles do chat -->
+            <div class="chat-controls">
+                <div class="message-type-selector">
+                    <button id="generalChatBtn" class="chat-type-btn active">
+                        <i class="fas fa-globe"></i> Chat Geral
+                    </button>
+                    <button id="privateChatBtn" class="chat-type-btn">
+                        <i class="fas fa-lock"></i> Chat Privado
+                    </button>
+                </div>
+                
+                <!-- Área de entrada de mensagem -->
+                <div class="message-input-area">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            placeholder="Digite sua mensagem..." 
+                            autocomplete="off"
+                        >
+                        <button id="sendMessageBtn" class="btn-send">
+                            <i class="fas fa-paper-plane"></i> Enviar
+                        </button>
+                    </div>
+                    
+                    <!-- Seleção de destinatário para mensagem privada -->
+                    <div class="private-recipient" id="privateRecipientContainer" style="display: none;">
+                        <label for="recipientSelect">
+                            <i class="fas fa-user-secret"></i> Para:
+                        </label>
+                        <select id="recipientSelect">
+                            <option value="">Selecione um usuário...</option>
+                            <!-- Usuários serão inseridos aqui -->
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Histórico de mensagens -->
+                <div class="history-controls">
+                    <button id="loadGeneralHistory" class="btn-history">
+                        <i class="fas fa-history"></i> Carregar Histórico Geral
+                    </button>
+                    <button id="loadPrivateHistory" class="btn-history">
+                        <i class="fas fa-user-lock"></i> Carregar Histórico Privado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para entrada de nome de usuário -->
+    <div class="modal" id="usernameModal">
+        <div class="modal-content">
+            <h2><i class="fas fa-user-circle"></i> Bem-vindo ao Chat!</h2>
+            <p>Digite seu nome de usuário para entrar no chat:</p>
+            
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="usernameInput" 
+                    placeholder="Seu nome de usuário"
+                    maxlength="20"
+                    autocomplete="off"
+                >
+                <div class="color-picker">
+                    <p>Escolha uma cor para seu avatar:</p>
+                    <div class="color-options">
+                        <div class="color-option" style="background-color: #0082FB;" data-color="#0082FB"></div>
+                        <div class="color-option" style="background-color: #0064E0;" data-color="#0064E0"></div>
+                        <div class="color-option" style="background-color: #1C2B33;" data-color="#1C2B33"></div>
+                        <div class="color-option" style="background-color: #28a745;" data-color="#28a745"></div>
+                        <div class="color-option" style="background-color: #ffc107;" data-color="#ffc107"></div>
+                        <div class="color-option" style="background-color: #dc3545;" data-color="#dc3545"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="joinChatBtn" class="btn-join">
+                    <i class="fas fa-sign-in-alt"></i> Entrar no Chat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
