@@ -1,3 +1,4 @@
+
 # Chat em Tempo Real - Sistemas Distribuídos e Paralelos
 
 ## Descrição
@@ -20,3 +21,7 @@ Aplicação de chat em tempo real desenvolvida como projeto para a disciplina de
 ## Desenvolvido por
 - **Albertina Pedro**
 - **Nzuzi Ariete**
+=======
+# Chat-Aribeth
+Chat em tempo real usando a biblioteca socket.io
+
